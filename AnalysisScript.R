@@ -10,7 +10,7 @@
 library(data.table)
 library(tidyverse)
 library(igraph)
-library(bipartite)
+#library(bipartite)
 source("NAC.R")
 ######################################
 
@@ -38,6 +38,18 @@ an_casos = NetworkAnalyzer(casos_nw, directed = TRUE)
 ######################################
 #color nodes
 ######################################
+V(an_sanos$g)[grep(pattern = "hsa-mir", 
+                   x = V(an_sanos$g)$name)]$type= "miRNA" 
+V(an_sanos$g)[grep(pattern = "hsa-mir", 
+                   x = V(an_sanos$g)$name, 
+                   invert = TRUE)]$type= "gene" 
+
+
+V(an_casos$g)[grep(pattern = "hsa-mir", 
+                   x = V(an_casos$g)$name)]$type= "miRNA" 
+V(an_casos$g)[grep(pattern = "hsa-mir", 
+                   x = V(an_casos$g)$name, 
+                   invert = TRUE)]$type= "gene" 
 
 ########################################
 #export for Networkx bipartite analysis
