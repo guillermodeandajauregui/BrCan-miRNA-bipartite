@@ -28,11 +28,12 @@ casos = casos[, c(3,1)]
 sanos_nw = igraph::graph_from_edgelist(el = as.matrix(sanos))
 casos_nw = igraph::graph_from_edgelist(el = as.matrix(casos))
 
-sanos_nw
+
 ######################################
 #General analysis 
 ######################################
-
+an_sanos = NetworkAnalyzer(sanos_nw, directed = TRUE)
+an_casos = NetworkAnalyzer(casos_nw, directed = TRUE)
 
 ######################################
 #color nodes
