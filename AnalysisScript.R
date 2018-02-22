@@ -55,6 +55,8 @@ V(an_casos$g)[grep(pattern = "hsa-mir",
 #export for Networkx bipartite analysis
 ########################################
 
+igraph::write.graph()
+
 ########################################
 #Reload Networkx analyzed 
 ########################################
