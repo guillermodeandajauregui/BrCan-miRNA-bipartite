@@ -55,8 +55,29 @@ V(an_casos$g)[grep(pattern = "hsa-mir",
 #export for Networkx bipartite analysis
 ########################################
 
-igraph::write.graph()
+igraph::write.graph(graph = an_sanos$g, 
+                    file = "results/sanos.gml", 
+                    format = "gml"
+                    )
 
+igraph::write.graph(graph = an_casos$g, 
+                    file = "results/casos.gml", 
+                    format = "gml"
+)
+
+########################################
+#outside scripts
+########################################
+
+#call the bash script for modification
+
+system(command = "./rgml2nx.sh results/sanos.gml results/sanos_nx.gml")
+system(command = "./rgml2nx.sh results/casos.gml results/casos_nx.gml")
+
+#Networkx analysis
+
+system(command = "python BipartiteAnalysis.py results/sanos_nx.gml results/anx_sanos.gml")
+system(command = "python BipartiteAnalysis.py results/casos_nx.gml results/anx_casos.gml")
 ########################################
 #Reload Networkx analyzed 
 ########################################
