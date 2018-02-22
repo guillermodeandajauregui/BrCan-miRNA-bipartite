@@ -45,7 +45,7 @@ for nodo in F.nodes():
     if F.node[nodo]["grado"]<3:
         redundancia[nodo] = 0
     else:
-        redundancia[nodo] = nx.bipartite.node_redundancy(F, nodes = [nodo])
+        redundancia[nodo] = nx.bipartite.node_redundancy(F, nodes = [nodo])[nodo]
 
         
 nx.set_node_attributes(F, 
@@ -54,5 +54,5 @@ nx.set_node_attributes(F,
                        )
 
 nx.write_gml(F, path_out)
-
+#nx.write_graphml(F, path_out)
 print("victoria!")

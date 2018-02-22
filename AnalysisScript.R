@@ -51,6 +51,15 @@ V(an_casos$g)[grep(pattern = "hsa-mir",
                    x = V(an_casos$g)$name, 
                    invert = TRUE)]$type= "gene" 
 
+#change names of miRNAs 
+
+V(an_sanos$g)$name = gsub(pattern = "-", replacement = "GUIONMEDIO", x = V(an_sanos$g)$name)
+V(an_sanos$g)$name = gsub(pattern = ".MIMAT", replacement = "puntoMIMAT", x = V(an_sanos$g)$name)
+
+V(an_casos$g)$name = gsub(pattern = "-", replacement = "GUIONMEDIO", x = V(an_casos$g)$name)
+V(an_casos$g)$name = gsub(pattern = ".MIMAT", replacement = "puntoMIMAT", x = V(an_casos$g)$name)
+
+V(an_casos$g)$name
 ########################################
 #export for Networkx bipartite analysis
 ########################################
@@ -81,6 +90,29 @@ system(command = "python BipartiteAnalysis.py results/casos_nx.gml results/anx_c
 ########################################
 #Reload Networkx analyzed 
 ########################################
+
+anx_sanos = read.graph(file = "results/anx_sanos.gml", "gml")
+anx_casos = read.graph(file = "results/anx_casos.gml", "gml")
+
+#change labels back to original names
+V(anx_sanos)$label = gsub(pattern = "puntoMIMAT", 
+                          replacement = ".MIMAT", 
+                          x = V(anx_sanos)$label)
+
+V(anx_sanos)$label = gsub(pattern = "GUIONMEDIO", 
+                          replacement = "-", 
+                          x = V(anx_sanos)$label)
+
+V(anx_casos)$label = gsub(pattern = "puntoMIMAT", 
+                          replacement = ".MIMAT", 
+                          x = V(anx_casos)$label)
+
+V(anx_casos)$label = gsub(pattern = "GUIONMEDIO", 
+                          replacement = "-", 
+                          x = V(anx_casos)$label)
+
+V(anx_sanos)$name = V(anx_sanos)$label
+V(anx_casos)$name = V(anx_casos)$label
 
 ########################################
 #Plot
