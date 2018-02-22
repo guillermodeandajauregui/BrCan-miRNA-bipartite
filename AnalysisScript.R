@@ -116,9 +116,152 @@ V(anx_casos)$name = V(anx_casos)$label
 
 ########################################
 #Plot
-#degree
+
+
+#get dataframes
+
+sanos_df = get.data.frame(anx_sanos, what = "vertices")
+casos_df = get.data.frame(anx_casos, what = "vertices")
+
+############sanos
+######  degree
+##          miRNA
+p = ggplot(data = filter(sanos_df, type == "miRNA"), 
+           aes(x = degree)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "sanos", subtitle = "degree miRNA")
+ggsave(filename = "results/plots/sanos_degree_miRNA.pdf", 
+       plot = p
+       )
+##          gene
+p = ggplot(data = filter(sanos_df, type == "gene"), 
+           aes(x = degree)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "sanos", subtitle = "degree gene")
+ggsave(filename = "results/plots/sanos_degree_gene.pdf", 
+       plot = p
+)  
 #CCdot
-#CCribbon
+##          miRNA
+p = ggplot(data = filter(sanos_df, type == "miRNA"), 
+           aes(x = ClusteringDot)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "sanos", subtitle = "ClusteringDot miRNA")
+ggsave(filename = "results/plots/sanos_ClusteringDot_miRNA.pdf", 
+       plot = p
+)
+##          gene
+p = ggplot(data = filter(sanos_df, type == "gene"), 
+           aes(x = ClusteringDot)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "sanos", subtitle = "ClusteringDot gene")
+ggsave(filename = "results/plots/sanos_ClusteringDot_gene.pdf", 
+       plot = p
+)
+#CC.RA
+##          miRNA
+p = ggplot(data = filter(sanos_df, type == "miRNA"), 
+           aes(x = ClusteringRobbinsAlexander)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "sanos", subtitle = "ClusteringRobbinsAlexander miRNA")
+ggsave(filename = "results/plots/sanos_ClusteringRobbinsAlexander_miRNA.pdf", 
+       plot = p
+)
+##          gene
+p = ggplot(data = filter(sanos_df, type == "gene"), 
+           aes(x = ClusteringRobbinsAlexander)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "sanos", subtitle = "ClusteringRobbinsAlexander gene")
+ggsave(filename = "results/plots/sanos_ClusteringRobbinsAlexander_gene.pdf", 
+       plot = p
+)
 #Redundancy
+##          miRNA
+p = ggplot(data = filter(sanos_df, type == "miRNA"), 
+           aes(x = Redundancy)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "sanos", subtitle = "Redundancy miRNA")
+ggsave(filename = "results/plots/sanos_Redundancy_miRNA.pdf", 
+       plot = p
+)
+##          gene
+p = ggplot(data = filter(sanos_df, type == "gene"), 
+           aes(x = Redundancy)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "sanos", subtitle = "Redundancy gene")
+ggsave(filename = "results/plots/sanos_Redundancy_gene.pdf", 
+       plot = p
+)
+
+############casos
+######  degree
+##          miRNA
+p = ggplot(data = filter(casos_df, type == "miRNA"), 
+           aes(x = degree)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "casos", subtitle = "degree miRNA")
+ggsave(filename = "results/plots/casos_degree_miRNA.pdf", 
+       plot = p
+)
+##          gene
+p = ggplot(data = filter(casos_df, type == "gene"), 
+           aes(x = degree)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "casos", subtitle = "degree gene")
+ggsave(filename = "results/plots/casos_degree_gene.pdf", 
+       plot = p
+)  
+#CCdot
+##          miRNA
+p = ggplot(data = filter(casos_df, type == "miRNA"), 
+           aes(x = ClusteringDot)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "casos", subtitle = "ClusteringDot miRNA")
+ggsave(filename = "results/plots/casos_ClusteringDot_miRNA.pdf", 
+       plot = p
+)
+##          gene
+p = ggplot(data = filter(casos_df, type == "gene"), 
+           aes(x = ClusteringDot)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "casos", subtitle = "ClusteringDot gene")
+ggsave(filename = "results/plots/casos_ClusteringDot_gene.pdf", 
+       plot = p
+)
+#CC.RA
+##          miRNA
+p = ggplot(data = filter(casos_df, type == "miRNA"), 
+           aes(x = ClusteringRobbinsAlexander)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "casos", subtitle = "ClusteringRobbinsAlexander miRNA")
+ggsave(filename = "results/plots/casos_ClusteringRobbinsAlexander_miRNA.pdf", 
+       plot = p
+)
+##          gene
+p = ggplot(data = filter(casos_df, type == "gene"), 
+           aes(x = ClusteringRobbinsAlexander)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "casos", subtitle = "ClusteringRobbinsAlexander gene")
+ggsave(filename = "results/plots/casos_ClusteringRobbinsAlexander_gene.pdf", 
+       plot = p
+)
+#Redundancy
+##          miRNA
+p = ggplot(data = filter(casos_df, type == "miRNA"), 
+           aes(x = Redundancy)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "casos", subtitle = "Redundancy miRNA")
+ggsave(filename = "results/plots/casos_Redundancy_miRNA.pdf", 
+       plot = p
+)
+##          gene
+p = ggplot(data = filter(casos_df, type == "gene"), 
+           aes(x = Redundancy)) 
+p = p  + stat_ecdf()
+p = p + ggtitle(label = "casos", subtitle = "Redundancy gene")
+ggsave(filename = "results/plots/casos_Redundancy_gene.pdf", 
+       plot = p
+)
+##
 ########################################
 
