@@ -25,3 +25,4 @@ vignettes/*.pdf
 .Rproj.user
 #local results
 /results
+UnorderedExploratoryFile.R

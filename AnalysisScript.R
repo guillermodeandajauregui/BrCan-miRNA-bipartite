@@ -38,16 +38,16 @@ an_casos = NetworkAnalyzer(casos_nw, directed = TRUE)
 ######################################
 #color nodes
 ######################################
-V(an_sanos$g)[grep(pattern = "hsa-mir", 
+V(an_sanos$g)[grep(pattern = "\\.MIMAT.*", 
                    x = V(an_sanos$g)$name)]$type= "miRNA" 
-V(an_sanos$g)[grep(pattern = "hsa-mir", 
+V(an_sanos$g)[grep(pattern = "\\.MIMAT.*", 
                    x = V(an_sanos$g)$name, 
                    invert = TRUE)]$type= "gene" 
 
 
-V(an_casos$g)[grep(pattern = "hsa-mir", 
+V(an_casos$g)[grep(pattern = "\\.MIMAT.*", 
                    x = V(an_casos$g)$name)]$type= "miRNA" 
-V(an_casos$g)[grep(pattern = "hsa-mir", 
+V(an_casos$g)[grep(pattern = "\\.MIMAT.*", 
                    x = V(an_casos$g)$name, 
                    invert = TRUE)]$type= "gene" 
 
